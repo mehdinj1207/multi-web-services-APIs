@@ -1,0 +1,32 @@
+syntax="proto3";
+option java_package="net.njema.customerdataservice.stub";
+service CustomerService {
+  rpc getAllCustomers(GetAllCustomersRequest)returns (GetCustomersResponse);
+  rpc getCustomerById(GetAllCustomerByIdRequest)returns (GetCustomerByIdResponse);
+  rpc saveCustomer(SaveCustomerRequest)returns(SaveCustomerResponse);
+}
+message GetAllCustomersRequest{};
+message GetCustomersResponse{
+  repeated Customer customers=1;
+}
+message Customer{
+  int64  id=1;
+  string name=2;
+  string email=3;
+}
+message GetAllCustomerByIdRequest{
+  int64 id=1;
+}
+message GetCustomerByIdResponse{
+  Customer customer=1;
+}
+message SaveCustomerRequest{
+  CustomerRequest customer=1;
+}
+message SaveCustomerResponse{
+  Customer customer=1;
+}
+message CustomerRequest{
+  string name=1;
+  string email=2;
+}
